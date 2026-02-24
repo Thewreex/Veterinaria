@@ -1,8 +1,7 @@
 const boton = document.getElementById("btnLogin");
-
-boton.onclick = function () {
-  window.location.href = "ingresarMascota.html";
-};
+const inputUser = document.getElementById("inputUser");
+const inputPassword = document.getElementById("inputPassword");
+const alertaLogin = document.getElementById("alertaLogin");
 
 const listaVeterinarios = [];
 
@@ -17,6 +16,24 @@ export class Veterinario {
   }
 }
 
-const carleto = new Veterinario("Carleto", "123123");
+boton.onclick = function () {
+  let coincidencia = [];
+  for (let vet of listaVeterinarios) {
+    if (
+      vet.nombreUsuario === inputUser.value &&
+      vet.contrasena === inputPassword.value
+    ) {
+      coincidencia = [true, vet];
+    }
+  }
+
+  console.log(coincidencia);
+
+  if (coincidencia[0]) {
+    window.location.href = "ingresarMascota.html";
+  } else {
+    alertaLogin.classList.remove("d-none");
+  }
+};
 
 console.log(listaVeterinarios);

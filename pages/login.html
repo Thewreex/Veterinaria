@@ -23,6 +23,9 @@
     >
       <div class="col-4 bg-light rounded">
         <form class="p-4 rounded">
+          <div id="alertaLogin" class="alert alert-danger d-none" role="alert">
+            Error al iniciar sesion, ingrese datos validos
+          </div>
           <h1 class="text-center my-4 fw-bolder">Bienvenido</h1>
 
           <div class="mb-3">
@@ -32,7 +35,7 @@
             <input
               type="email"
               class="form-control"
-              id="exampleInputEmail1"
+              id="inputUser"
               aria-describedby="emailHelp"
             />
           </div>
@@ -43,7 +46,7 @@
             <input
               type="password"
               class="form-control mb-5"
-              id="exampleInputPassword1"
+              id="inputPassword"
             />
           </div>
           <button
