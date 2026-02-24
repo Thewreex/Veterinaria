@@ -30,7 +30,7 @@ boton.onclick = function () {
   console.log(coincidencia);
 
   if (coincidencia[0]) {
-    window.location.href = "ingresarMascota.html";
+    window.location.href = "menu.html";
   } else {
     alertaLogin.classList.remove("d-none");
   }
