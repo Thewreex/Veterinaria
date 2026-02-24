@@ -1,0 +1,16 @@
+* {
+  font-family: 'Rubik', sans-serif;
+}
+
+.btn-custom, .bg-custom {
+    background-color: rgb(117, 236, 93);
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: rgb(94, 190, 75);
+}
+
+h1 {
+    color: rgb(17, 173, 3);
+}
