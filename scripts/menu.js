@@ -4,7 +4,7 @@ const botonConsulta = document.getElementById("botonConsulta");
 const botonIngresar = document.getElementById("botonIngresar");
 const botonModificar = document.getElementById("botonModificar");
 
-import { cargarClick } from "./modificarDatos.js";
+import { cargarClick, cargarModificar } from "./modificarDatos.js";
 import { cargarTabla } from "./consultarDatos.js";
 
 async function cargarPagina(pagina) {
@@ -23,8 +23,9 @@ botonIngresar.addEventListener("click", async () => {
   cargarClick();
 });
 
-botonModificar.addEventListener("click", () => {
-  cargarPagina("modificarMascotas.html");
+botonModificar.addEventListener("click", async () => {
+  await cargarPagina("modificarMascotas.html");
+  cargarModificar();
 });
 
 const textoBienvenida = document.getElementById("textoBienvenida");

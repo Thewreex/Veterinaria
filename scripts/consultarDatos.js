@@ -1,5 +1,3 @@
-import { listaVeterinarios } from "./clases.js";
-
 export function cargarTabla() {
   let mascotas = JSON.parse(localStorage.getItem("mascotas"));
   const cuerpo = document.getElementById("cuerpoTabla");

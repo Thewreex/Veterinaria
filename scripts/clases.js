@@ -29,4 +29,10 @@ export class Mascota {
       idVet: id,
     });
   }
+
+  modificar(nombre, tutor, evolucionMedica) {
+    this.nombre = nombre;
+    this.tutor = tutor;
+    this.evolucionMedica = evolucionMedica;
+  }
 }
