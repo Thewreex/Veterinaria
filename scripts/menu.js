@@ -5,20 +5,22 @@ const botonIngresar = document.getElementById("botonIngresar");
 const botonModificar = document.getElementById("botonModificar");
 
 import { cargarClick } from "./modificarDatos.js";
+import { cargarTabla } from "./consultarDatos.js";
 
 async function cargarPagina(pagina) {
   const respuesta = await fetch(pagina);
   const html = await respuesta.text();
   contenido.innerHTML = html;
-  cargarClick();
 }
 
-botonConsulta.addEventListener("click", () => {
-  cargarPagina("verMascotas.html");
+botonConsulta.addEventListener("click", async () => {
+  await cargarPagina("verMascotas.html");
+  cargarTabla();
 });
 
-botonIngresar.addEventListener("click", () => {
-  cargarPagina("ingresarMascotas.html");
+botonIngresar.addEventListener("click", async () => {
+  await cargarPagina("ingresarMascotas.html");
+  cargarClick();
 });
 
 botonModificar.addEventListener("click", () => {

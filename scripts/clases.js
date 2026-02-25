@@ -22,6 +22,7 @@ export class Mascota {
     this.evolucionMedica = evolucionMedica;
 
     listaMascotas.push({
+      id: listaMascotas.length + 1,
       nombre: this.nombre,
       tutor: this.tutor,
       evolucionMedica: this.evolucionMedica,

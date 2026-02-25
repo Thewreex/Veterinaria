@@ -10,10 +10,23 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../css/global.css" />
   </head>
   <body>
-    <h1>Ver Mascotas</h1>
+    <div class="container-fluid col-10 mt-5">
+      <table class="table">
+        <thead>
+          <tr class="table-custom">
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tutor</th>
+            <th scope="col">Evolucion Medica</th>
+            <th scope="col">Doctor</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoTabla"></tbody>
+      </table>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

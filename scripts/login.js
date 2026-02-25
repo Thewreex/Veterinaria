@@ -9,21 +9,23 @@ import { listaVeterinarios } from "./clases.js";
 
 console.log(listaVeterinarios);
 
-boton.onclick = function () {
-  for (let vet of listaVeterinarios) {
-    if (
-      vet.nombreUsuario === inputUser.value &&
-      vet.contrasena === inputPassword.value
-    ) {
-      coincidencia = [true, vet.nombreUsuario, vet.id];
+if (boton) {
+  boton.onclick = function () {
+    for (let vet of listaVeterinarios) {
+      if (
+        vet.nombreUsuario === inputUser.value &&
+        vet.contrasena === inputPassword.value
+      ) {
+        coincidencia = [true, vet.nombreUsuario, vet.id];
+      }
     }
-  }
 
-  if (coincidencia[0]) {
-    localStorage.setItem("usuario", coincidencia[1]);
-    localStorage.setItem("id", coincidencia[2]);
-    window.location.href = "menu.html";
-  } else {
-    alertaLogin.classList.remove("d-none");
-  }
-};
+    if (coincidencia[0]) {
+      localStorage.setItem("usuario", coincidencia[1]);
+      localStorage.setItem("id", coincidencia[2]);
+      window.location.href = "menu.html";
+    } else {
+      alertaLogin.classList.remove("d-none");
+    }
+  };
+}
