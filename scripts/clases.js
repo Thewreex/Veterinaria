@@ -21,18 +21,25 @@ export class Mascota {
     this.tutor = tutor;
     this.evolucionMedica = evolucionMedica;
 
+    listaMascotas.sort((a, b) => a.id - b.id);
+
+    let nuevaId = listaMascotas.length + 1;
+
+    for (let i = 1; i <= listaMascotas.length; i++) {
+      if (listaMascotas[i - 1].id !== i) {
+        nuevaId = i;
+        break;
+      }
+    }
+
     listaMascotas.push({
-      id: listaMascotas.length + 1,
+      id: nuevaId,
       nombre: this.nombre,
       tutor: this.tutor,
       evolucionMedica: this.evolucionMedica,
       idVet: id,
     });
-  }
 
-  modificar(nombre, tutor, evolucionMedica) {
-    this.nombre = nombre;
-    this.tutor = tutor;
-    this.evolucionMedica = evolucionMedica;
+    listaMascotas.sort((a, b) => a.id - b.id);
   }
 }
