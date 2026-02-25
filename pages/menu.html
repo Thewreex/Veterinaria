@@ -17,8 +17,11 @@
     />
   </head>
   <body>
+    <!-- Barra de navegacion -->
+
     <nav class="navbar navbar-expand-lg bg-custom">
       <div class="h-100 container-fluid">
+        <!-- Titulo Navbar -->
         <a class="navbar-brand fw-bolder text-light">Veterinaria MundoPet</a>
         <button
           class="navbar-toggler"
@@ -33,6 +36,7 @@
         </button>
         <div class="collapse h-100 navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 cursor-pointer">
+            <!-- Opcion para consultar mascota -->
             <li class="nav-item cursor-pointer">
               <a
                 class="nav-link text-light cursor-pointer"
@@ -42,6 +46,8 @@
               >
             </li>
             <li class="nav-item dropdown">
+              <!-- Opcion para editar Datos -->
+
               <a
                 class="nav-link dropdown-toggle text-light"
                 href="#"
@@ -53,9 +59,11 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
+                  <!-- Opcion Ingresar -->
                   <a class="dropdown-item" id="botonIngresar">Ingresar</a>
                 </li>
                 <li>
+                  <!-- Opcion Eliminar y modificar -->
                   <a class="dropdown-item" id="botonModificar"
                     >Modificar / Eliminar</a
                   >
@@ -63,6 +71,8 @@
               </ul>
             </li>
           </ul>
+
+          <!-- Texto que da la bienvenida junto al nombre del usuario -->
           <div class="d-flex align-items-center">
             <h5 id="textoBienvenida" class="m-0 text-light">
               <i class="bi bi-box-arrow-right"></i>
@@ -72,6 +82,7 @@
       </div>
     </nav>
 
+    <!-- etiqueta main donde se insertara el contenido -->
     <main id="contenido"></main>
 
     <script

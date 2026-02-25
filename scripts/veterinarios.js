@@ -1,6 +1,8 @@
-import { Veterinario, listaVeterinarios } from "./clases.js";
+// script que se encarga de tener los veterinarios que seran usados dentro del sistema
 
-const carleto = new Veterinario("Carleto", "123123");
+import { Veterinario } from "./clases.js";
+
+const carlos = new Veterinario("Carlos", "123123");
 const julia = new Veterinario("Julia", "pass456");
 const marcos = new Veterinario("Marcos", "admin123");
 const elena = new Veterinario("Elena", "paws987");

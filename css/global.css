@@ -1,25 +1,35 @@
+/* ingresar una fuente global para la pagina */
+
 * {
   font-family: 'Rubik', sans-serif;
 }
+
+/* cambio de color de los botones */
 
 .btn-custom, .bg-custom {
     background-color: rgb(117, 236, 93);
     border: none;
 }
 
+/* cambia color del texto y fondo del header de la tabla */
+
 .table-custom {
     --bs-table-bg: rgb(117, 236, 93);
     --bs-table-color: white; 
 }
 
+
 .btn-custom:hover {
     background-color: rgb(94, 190, 75);
 }
+
+/* cambia color de los titulos */
 
 h1 {
     color: rgb(17, 173, 3);
 }
 
+/* cambia el cursor a pointer para los elementos del header */
 
 #botonConsulta, #botonIngresar, #botonModificar {
     cursor: pointer;
