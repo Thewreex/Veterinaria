@@ -1,4 +1,4 @@
-import { Veterinario } from "./script.js";
+import { Veterinario } from "./login.js";
 
 const carleto = new Veterinario("Carleto", "123123");
 const julia = new Veterinario("Julia", "pass456");

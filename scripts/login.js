@@ -16,8 +16,9 @@ export class Veterinario {
   }
 }
 
+export let coincidencia = [];
+
 boton.onclick = function () {
-  let coincidencia = [];
   for (let vet of listaVeterinarios) {
     if (
       vet.nombreUsuario === inputUser.value &&
@@ -27,9 +28,8 @@ boton.onclick = function () {
     }
   }
 
-  console.log(coincidencia);
-
   if (coincidencia[0]) {
+    localStorage.setItem("usuario", coincidencia[1].nombreUsuario);
     window.location.href = "menu.html";
   } else {
     alertaLogin.classList.remove("d-none");
