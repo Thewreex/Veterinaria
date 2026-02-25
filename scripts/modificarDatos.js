@@ -2,25 +2,38 @@ import { Mascota, listaMascotas } from "./clases.js";
 
 export function cargarClick() {
   const btnIngresar = document.getElementById("btnIngresarMascota");
-  const inputNombre = document.getElementById("inputNombre");
-  const inputTutor = document.getElementById("inputTutor");
-  const inputEvMedica = document.getElementById("inputEvMedica");
+  const alertSucess = document.getElementById("alertSucess");
+  const alertDanger = document.getElementById("alertDanger");
 
   if (btnIngresar) {
     btnIngresar.addEventListener("click", () => {
-      let nuevaMascota = new Mascota(
-        inputNombre.value,
-        inputTutor.value,
-        inputEvMedica.value,
-      );
-      localStorage.setItem("mascotas", JSON.stringify(listaMascotas));
-      console.log(JSON.parse(localStorage.getItem("mascotas")));
+      if (
+        inputNombre.value !== "" &&
+        inputTutor.value !== "" &&
+        inputEvMedica.value !== ""
+      ) {
+        let nuevaMascota = new Mascota(
+          inputNombre.value,
+          inputTutor.value,
+          inputEvMedica.value,
+        );
+        localStorage.setItem("mascotas", JSON.stringify(listaMascotas));
+        console.log(JSON.parse(localStorage.getItem("mascotas")));
+        alertSucess.classList.remove("d-none");
+      } else {
+        alertDanger.classList.remove("d-none");
+      }
     });
   }
 }
 
 export function cargarModificar() {
+  const inputNombre = document.getElementById("inputNombre");
+  const inputTutor = document.getElementById("inputTutor");
+  const inputEvMedica = document.getElementById("inputEvMedica");
   const cuerpo = document.getElementById("cuerpoTablaMod");
+  const alertMod = document.getElementById("alertMod");
+  const btnEliminar = document.getElementById("btnEliminar");
   let idVet = localStorage.getItem("id");
 
   for (let mascota of listaMascotas) {
@@ -30,10 +43,10 @@ export function cargarModificar() {
     <th scope="row">${mascota.id}</th>
     <td id="${mascota.id}NOM">${mascota.nombre}</td>
     <td class="d-flex justify-content-evenly">
-      <button type="button" id="${mascota.id}" class="btn btnModificar btn-primary">
+      <button type="button" id="${mascota.id}" class="btn btnModificar btn-primary" data-bs-toggle="modal" data-bs-target="#ModalModificar">
         Modificar
       </button>
-      <button type="button" id="${mascota.id}" class="btn btn-danger btnEliminar">
+      <button type="button" id="${mascota.id}" class="btn btn-danger btnEliminar" data-bs-toggle="modal" data-bs-target="#ModalEliminar">
         Eliminar
       </button>
     </td>
@@ -47,58 +60,40 @@ export function cargarModificar() {
   btnModificar.forEach((boton) => {
     boton.addEventListener("click", () => {
       const id = boton.id;
+      const mascota = listaMascotas.find((m) => m.id == id);
 
-      const nuevoNombre = prompt(
-        "Ingrese un nuevo nombre, deje vacio para conservar el actual",
-      );
-      const nuevoTutor = prompt(
-        "Ingrese un nuevo Tutor, deje vacio para conservar el actual",
-      );
-      const nuevoEvMedica = prompt(
-        "Ingrese una nueva Evolucion medica, deje vacio para conservar el actual",
-      );
+      if (mascota) {
+        inputNombre.placeholder = mascota.nombre;
+        inputTutor.placeholder = mascota.tutor;
+        inputEvMedica.placeholder = mascota.evolucionMedica;
 
-      for (let mascota of listaMascotas) {
-        if (mascota.id == id) {
+        btnEnviar.onclick = () => {
           const nomTabla = document.getElementById(`${id}NOM`);
-          mascota.nombre = nuevoNombre || mascota.nombre;
-          mascota.tutor = nuevoTutor || mascota.tutor;
-          mascota.evolucionMedica = nuevoEvMedica || mascota.evolucionMedica;
+          mascota.nombre = inputNombre.value || mascota.nombre;
+          mascota.tutor = inputTutor.value || mascota.tutor;
+          mascota.evolucionMedica =
+            inputEvMedica.value || mascota.evolucionMedica;
           nomTabla.textContent = mascota.nombre;
-          break;
-        }
+          localStorage.setItem("mascotas", JSON.stringify(listaMascotas));
+          alertMod.classList.remove("d-none");
+        };
       }
-
-      localStorage.setItem("mascotas", JSON.stringify(listaMascotas));
-
-      console.log(listaMascotas);
     });
   });
 
-  const btnEliminar = document.querySelectorAll(".btnEliminar");
+  const botonesEliminar = document.querySelectorAll(".btnEliminar");
 
-  btnEliminar.forEach((boton) => {
+  botonesEliminar.forEach((boton) => {
     boton.addEventListener("click", () => {
       const id = boton.id;
       const tr = document.getElementById(`${id}TR`);
-      console.log(listaMascotas);
-
       const index = listaMascotas.findIndex((m) => m.id == id);
-      if (index !== -1) {
-        const mascota = listaMascotas[index];
-        const eleccion = +prompt(
-          `¿Estas seguro que desea eliminar la consulta de: ${mascota.nombre}?, Ingresa 1 para aceptar, ingresa cualquier otra cosa para cancelar `,
-        );
 
-        if (eleccion === 1) {
-          listaMascotas.splice(index, 1);
-          console.log(listaMascotas);
-          tr.remove();
-        }
-      }
-      localStorage.setItem("mascotas", JSON.stringify(listaMascotas));
-
-      console.log(listaMascotas);
+      btnEliminar.onclick = () => {
+        listaMascotas.splice(index, 1);
+        tr.remove();
+        localStorage.setItem("mascotas", JSON.stringify(listaMascotas));
+      };
     });
   });
 }
