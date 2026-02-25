@@ -3,20 +3,11 @@ const inputUser = document.getElementById("inputUser");
 const inputPassword = document.getElementById("inputPassword");
 const alertaLogin = document.getElementById("alertaLogin");
 
-const listaVeterinarios = [];
-
-export class Veterinario {
-  constructor(nombreUsuario, contrasena) {
-    this.nombreUsuario = nombreUsuario;
-    this.contrasena = contrasena;
-    listaVeterinarios.push({
-      nombreUsuario: this.nombreUsuario,
-      contrasena: this.contrasena,
-    });
-  }
-}
-
 export let coincidencia = [];
+
+import { listaVeterinarios } from "./clases.js";
+
+console.log(listaVeterinarios);
 
 boton.onclick = function () {
   for (let vet of listaVeterinarios) {
@@ -24,16 +15,15 @@ boton.onclick = function () {
       vet.nombreUsuario === inputUser.value &&
       vet.contrasena === inputPassword.value
     ) {
-      coincidencia = [true, vet];
+      coincidencia = [true, vet.nombreUsuario, vet.id];
     }
   }
 
   if (coincidencia[0]) {
-    localStorage.setItem("usuario", coincidencia[1].nombreUsuario);
+    localStorage.setItem("usuario", coincidencia[1]);
+    localStorage.setItem("id", coincidencia[2]);
     window.location.href = "menu.html";
   } else {
     alertaLogin.classList.remove("d-none");
   }
 };
-
-console.log(listaVeterinarios);
