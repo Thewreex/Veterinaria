@@ -10,11 +10,46 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../css/global.css" />
   </head>
   <body>
-    <h1>ingresarMascotas</h1>
+    <div
+      class="container-fluid bg-light vh-100 d-flex align-items-center justify-content-center"
+    >
+      <div class="col-6 bg-white border border-3 rounded">
+        <form class="p-4 rounded">
+          <h1 class="text-center my-4 fw-bolder">Ingrese una mascota</h1>
 
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label mt-3"
+              >Nombre</label
+            >
+            <input
+              class="form-control"
+              id="inputUser"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Tutor</label>
+            <input class="form-control mb-4" id="inputPassword" />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Evolucion Medica</label
+            >
+            <input class="form-control mb-5" id="inputPassword" />
+          </div>
+          <button
+            id="btnLogin"
+            type="button"
+            class="btn btn-custom w-50 mb-4 d-block btn-primary mx-auto"
+          >
+            Ingresar
+          </button>
+        </form>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
